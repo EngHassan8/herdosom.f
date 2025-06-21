@@ -13,7 +13,7 @@ export default function Sign() {
     e.preventDefault();
     try {
       // Hubi URL-ka backend-kaaga port-kiisa
-      const res = await axios.post('https://backend-1-w138.onrender.com/diwaanGalin', {
+      const res = await axios.post('https://backside-27v7.onrender.com/diwaanGalin', {
         Name,
         Email,
         Password,
