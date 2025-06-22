@@ -140,7 +140,7 @@ export default function Header() {
                   <li><NavLink to="/contact" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? 'text-blue-700 font-bold' : 'hover:text-blue-600'}>📬 Contact</NavLink></li>
                 </ul>
 
-                {/* Drawer User Info or Signup */}
+                {/* Drawer User Info or Get Started */}
                 {user ? (
                   <div className="mt-6 px-5 py-3 border-t text-gray-700">
                     <div className="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-md mb-2">
@@ -158,9 +158,13 @@ export default function Header() {
                     </button>
                   </div>
                 ) : (
-                  <div className="mt-6">
-                    <NavLink to="/sign" onClick={() => setIsOpen(false)} className="block bg-blue-600 text-white text-center py-2 rounded hover:bg-blue-700">
-                      ➕ Sign Up
+                  <div className="mt-6 px-4">
+                    <NavLink
+                      to="/sign"
+                      onClick={() => setIsOpen(false)}
+                      className="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-lg shadow-md font-semibold transition duration-200"
+                    >
+                      🚀 Get Started
                     </NavLink>
                   </div>
                 )}
