@@ -137,8 +137,8 @@ export default function Header() {
                   <RxCross2 onClick={() => setIsOpen(false)} className="text-3xl text-blue-800 cursor-pointer" />
                 </div>
 
-                {/* Drawer Links */}
-                <ul className="flex flex-col space-y-4 font-semibold text-gray-900 my-10 text-xl">
+                {/* Drawer Links - Mobile Text Font Improved */}
+                <ul className="flex flex-col space-y-4 font-semibold text-gray-900 my-10 text-xl sm:text-lg tracking-wide leading-relaxed">
                   <li><NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? 'text-blue-700 font-bold' : 'hover:text-blue-600'}>🏠 Home</NavLink></li>
                   <li><NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? 'text-blue-700 font-bold' : 'hover:text-blue-600'}>ℹ️ About</NavLink></li>
                   <li><NavLink to="/news" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? 'text-blue-700 font-bold' : 'hover:text-blue-600'}>📰 News</NavLink></li>
