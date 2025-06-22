@@ -74,7 +74,7 @@ export default function Header() {
         </ul>
 
         {/* User Info or Sign Up - Desktop */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4 relative">
           {user ? (
             <>
               <div className="flex items-center gap-2">
@@ -93,18 +93,23 @@ export default function Header() {
               </button>
             </>
           ) : (
-            <button
-              onClick={() => setTheOpen(!TheOpen)}
-              className="bg-blue-600 text-white px-6 py-2 rounded shadow-lg hover:bg-blue-700 transition"
-            >
-              Get Started
-            </button>
-          )}
-          {TheOpen && !user && (
-            <div className="absolute top-20 right-10 bg-white shadow-lg border rounded-md">
-              <NavLink to="/sign" className="block px-4 py-2 hover:bg-blue-100 text-sm text-gray-700">
-                ➕ Sign Up
-              </NavLink>
+            <div className="relative">
+              <button
+                onClick={() => setTheOpen(!TheOpen)}
+                className="bg-blue-600 text-white px-6 py-2 rounded shadow-lg hover:bg-blue-700 transition"
+              >
+                Get Started
+              </button>
+              {TheOpen && (
+                <div className="absolute top-full mt-2 right-0 bg-white shadow-lg border rounded-md z-50 w-40">
+                  <NavLink
+                    to="/sign"
+                    className="block px-4 py-2 hover:bg-blue-100 text-sm text-gray-700"
+                  >
+                    ➕ Sign Up
+                  </NavLink>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -133,7 +138,7 @@ export default function Header() {
                 </div>
 
                 {/* Drawer Links */}
-                <ul className="flex flex-col space-y-4 font-semibold text-gray-900">
+                <ul className="flex flex-col space-y-4 font-semibold text-gray-900 my-10 text-xl">
                   <li><NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? 'text-blue-700 font-bold' : 'hover:text-blue-600'}>🏠 Home</NavLink></li>
                   <li><NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? 'text-blue-700 font-bold' : 'hover:text-blue-600'}>ℹ️ About</NavLink></li>
                   <li><NavLink to="/news" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? 'text-blue-700 font-bold' : 'hover:text-blue-600'}>📰 News</NavLink></li>
@@ -146,9 +151,7 @@ export default function Header() {
                     <div className="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-md mb-2">
                       {user?.Name?.split(' ').slice(0, 2).map(n => n[0]?.toUpperCase()).join('')}
                     </div>
-                    <p className="font-semibold">
-                      {user?.Name?.split(' ').slice(0, 2).join(' ')}
-                    </p>
+                    <p className="font-semibold">{user?.Name?.split(' ').slice(0, 2).join(' ')}</p>
                     <p className="text-sm text-gray-500">{user.Email}</p>
                     <button
                       onClick={handleLogout}
@@ -158,14 +161,23 @@ export default function Header() {
                     </button>
                   </div>
                 ) : (
-                  <div className="mt-6 px-4">
-                    <NavLink
-                      to="/sign"
-                      onClick={() => setIsOpen(false)}
-                      className="block bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-lg shadow-md font-semibold transition duration-200"
+                  <div className="mt-6 px-4 relative">
+                    <button
+                      onClick={() => setTheOpen(!TheOpen)}
+                      className="bg-blue-600 text-white px-6 py-2 rounded shadow-lg hover:bg-blue-700 transition w-full"
                     >
-                      🚀 Get Started
-                    </NavLink>
+                      Get Started
+                    </button>
+                    {TheOpen && (
+                      <div className="absolute top-full mt-2 left-0 bg-white shadow-lg border rounded-md z-50 w-full">
+                        <NavLink
+                          to="/sign"
+                          className="block px-4 py-2 hover:bg-blue-100 text-sm text-gray-700"
+                        >
+                          ➕ Sign Up
+                        </NavLink>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
